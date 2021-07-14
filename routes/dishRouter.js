@@ -11,7 +11,7 @@ const Dishes = require('../models/dishes');
 
 dishRouter.use(bodyParser.json());
 
-//=====================================================================
+
 
 dishRouter.route('/')
 .get((req,res,next) => {
@@ -29,7 +29,6 @@ dishRouter.route('/')
   
   Dishes.create(req.body)
   .then((dish) => {
-    console.log('Dish Created ', dish);
     res.statusCode = 200;
     res.setHeader('Content-Type', 'application/json');
     res.json(dish);
@@ -100,7 +99,7 @@ dishRouter.route('/:dishId')
 
 });
 
-//=====================================================================
+
 
 dishRouter.route('/:dishId/comments')
 .get((req,res,next) => {
@@ -176,10 +175,11 @@ dishRouter.route('/:dishId/comments')
 });
 
 
-//=====================================================================
+
 
 dishRouter.route('/:dishId/comments/:commentId')
 .get((req,res,next) => {
+  
   Dishes.findById(req.params.dishId)
   .then((dish) => {
     if (dish != null && dish.comments.id(req.params.commentId) != null) {

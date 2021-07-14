@@ -4,6 +4,7 @@ const Currency = mongoose.Types.Currency;
 const Schema = mongoose.Schema;
 
 const commentSchema = new Schema({
+
   rating:  {
     type: Number,
     min: 1,
@@ -23,6 +24,7 @@ const commentSchema = new Schema({
 });
 
 const dishSchema = new Schema({
+
   name: {
     type: String,
     required: true,
@@ -55,7 +57,9 @@ const dishSchema = new Schema({
   },
   comments:[commentSchema]
 }, {
+
   timestamps: true
+  
 });
 
 
